@@ -1,0 +1,16 @@
+.orders-container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 20vw;
+    outline: 1px solid lime;
+    height: 100vh;
+}
+.order-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+.total-price{
+    position: fixed;
+    bottom: 0;
+}
