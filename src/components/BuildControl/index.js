@@ -3,7 +3,9 @@ import React, { Component } from "react";
 import Foods from "../Foods";
 import Orders from "../Orders";
 import Order from "../order";
+import Modal from "../Modal";
 import './style.css'
+import OrderSummary from "../OrderSummary";
 
 class BuildControl extends Component {
 
@@ -89,6 +91,10 @@ class BuildControl extends Component {
             
         ],
         TotalPrice : 0,
+        showModal: false
+    }
+    showModal = () =>{
+        this.setState({showModal : true})
     }
     FoodNemeh = (id, une) =>{
         let newUnit = { ...this.state.unit};
@@ -119,7 +125,10 @@ class BuildControl extends Component {
         return(
             <div>
                 <Foods foods={this.state.foods} AddFood={this.AddFood}/>
-                <Orders unit={this.state.unit} foods={this.state.foods} FoodNemeh = {this.FoodNemeh} FoodHasah = {this.FoodHasah} TotalPrice = {this.state.TotalPrice}/>
+                <Orders showModal={this.showModal} unit={this.state.unit} foods={this.state.foods} FoodNemeh = {this.FoodNemeh} FoodHasah = {this.FoodHasah} TotalPrice = {this.state.TotalPrice}/>
+                <Modal show={this.state.showModal}>
+                    <OrderSummary foods={this.state.foods}/>
+                </Modal>
             </div>
         )
     }
